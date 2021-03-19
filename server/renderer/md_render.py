@@ -57,7 +57,6 @@ class MDRender:
 
         cls.full_path = md_file_path
         cls.image_path = Config.MEDIA_FOLDER
-        # print(md.get_active_rules())
         html_string = md.render(cls._get_md_string(md_file_path))
 
         return (
@@ -66,15 +65,6 @@ class MDRender:
             md.renderer.anchor_pairs,
             cls.image_path,
         )
-
-    # @classmethod
-    # def _set_path(cls, post_type, post_id):
-    #     options = {
-    #         "blog": cls.BLOG_PATH,
-    #         "note": cls.NOTES_PATH,
-    #         "project": cls.PORTFOLIO_PATH,
-    #     }
-    #     cls.full_path = f"{cls.ABS_PATH}{options[post_type]}{post_id}/"
 
     @classmethod
     def _get_md_string(cls, md_file_path):
@@ -175,14 +165,3 @@ class MDRender:
 
             # pass token to default renderer.
             return self.renderToken(tokens, idx, options, env)
-
-
-# {'code_block': <bound method RendererHTML.code_block of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'code_inline': <bound method RendererHTML.code_inline of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'fence': <bound method MDRender.MyRenderer.fence of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'front_matter': <bound method MDRender.MyRenderer.front_matter of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'hardbreak': <bound method RendererHTML.hardbreak of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'heading_open': <bound method MDRender.MyRenderer.heading_open of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'html_block': <bound method RendererHTML.html_block of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'html_inline': <bound method RendererHTML.html_inline of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'image': <bound method MDRender.MyRenderer.image of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'link_open': <bound method MDRender.MyRenderer.link_open of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'math_block': <bound method texmath_plugin.<locals>.render_math_block of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'softbreak': <bound method RendererHTML.softbreak of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'text': <bound method RendererHTML.text of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_ref': <bound method render_footnote_ref of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_block_open': <bound method render_footnote_block_open of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_block_close': <bound method render_footnote_block_close of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_open': <bound method render_footnote_open of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_close': <bound method render_footnote_close of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_anchor': <bound method render_footnote_anchor of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_caption': <bound method render_footnote_caption of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'footnote_anchor_name': <bound method render_footnote_anchor_name of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'math_inline': <bound method render_math_inline of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'math_single': <bound method texmath_plugin.<locals>.render_math_inline of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>, 'math_block_eqno': <bound method texmath_plugin.<locals>.render_math_block of <server.md_render.MDRender.MyRenderer object at 0x1058b83d0>>}
-
-# mdr = MDRender()
-# html_string, fm, ap = mdr.process_md(
-#     "/Users/tylerlozano/Documents/workspace/projects/vue/lozano-ai/server/server/content/blog/0/post.md"
-# )
-# print(html_string)
-# print(fm)
-# print(ap)

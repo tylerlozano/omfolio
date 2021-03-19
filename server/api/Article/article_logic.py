@@ -8,7 +8,6 @@ from api.Tag.tag_model import Tag
 from api.Tags_Article.tag_article_table import tag_article
 import json
 
-DEFAULT_IMAGE = "test.jpg"  # TODO: set in flask config to rotate between a set
 LOG = logging.getLogger(__name__)
 
 type_names = {"b": "blog", "p": "project", "n": "note"}
@@ -147,24 +146,6 @@ def update_article(
     article.feature_image = feature_image
     article.anchor_pairs = json.dumps(anchor_pairs)
     article.updated_at = datetime.utcnow()
-
-    # TODO: how to remove tags?
-    # if tags:
-    #     for tag in tags:
-    #         present_tag = Tag.query.filter_by(name=tag).first()
-    #         if present_tag:
-    #             # if it doesn't exist for this article already
-    #             if (
-    #                 not db.session.query(tag_article)
-    #                 .filter(tag_article.c.article_id == id_)
-    #                 .filter(tag_article.c.tag_id == present_tag.id)
-    #                 .first()
-    #             ):
-    #                 present_tag.articles_associated.append(article)
-    #         else:
-    #             new_tag = Tag(name=tag)
-    #             new_tag.articles_associated.append(article)
-    #             db.session.add(new_tag)
 
     db.session.commit()
     return jsonify({"article_id": article.id_})

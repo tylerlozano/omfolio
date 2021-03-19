@@ -8,13 +8,11 @@ from api.Article.article_logic import (
 )
 import os
 from configmodule import Config
-import click
 
 cmd = Blueprint("db", __name__)
 
 
-@cmd.cli.command("process_content")  # @click.argument('name')
-# @click.option("--path")
+@cmd.cli.command("process_content")
 def process_content():
     # if not path:
     path = Config.CONTENT_PATH
@@ -28,7 +26,7 @@ def process_content():
             html_string, front_matter, anchor_pairs, image_path = mdr.process_md(
                 f"{root}/{article}"
             )
-            # feature_image = _root[-2:]  # .append(front_matter.pop("feature_image"))
+
             feature_image = f'/media/{front_matter.pop("feature_image")}'
             if exists(article, type):
                 update_article(
