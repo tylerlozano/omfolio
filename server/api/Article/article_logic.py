@@ -7,6 +7,7 @@ from api.Article.article_model import Article
 from api.Tag.tag_model import Tag
 from api.Tags_Article.tag_article_table import tag_article
 import json
+from configmodule import Config
 
 LOG = logging.getLogger(__name__)
 
@@ -28,7 +29,7 @@ def create_article(
     content,
     title="",
     description="",
-    feature_image=DEFAULT_IMAGE,
+    feature_image=Config.DEFAULT_IMAGE,
     published=False,
     link=False,
     tags=[],
@@ -74,7 +75,7 @@ def _get_all_articles(type):
     articles = (
         Article.query.filter_by(type=type)
         .order_by(db.desc(Article.created_at))
-        .order_by(db.desc(Article.title))
+        .order_by(db.asc(Article.title))
     )
     serialized_data = []
     for article in articles:
@@ -129,7 +130,7 @@ def update_article(
     content,
     title="",
     description="",
-    feature_image=DEFAULT_IMAGE,
+    feature_image=Config.DEFAULT_IMAGE,
     published=False,
     link=False,
     tags=[],
