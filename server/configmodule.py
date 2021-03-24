@@ -1,9 +1,5 @@
 import os
 
-# app.config["SQLALCHEMY_DATABASE_URI"] =
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# app.config["JWT_SECRET_KEY"] = "YOUR_SECRET_KEY"
-
 
 class Config(object):
     """Base config, uses staging database server."""
@@ -15,16 +11,9 @@ class Config(object):
     TESTING = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///flaskdatabase.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = "YOUR_SECRET_KEY"
-
-    # @property
-    # def DATABASE_URI(self):         # Note: all caps
-    #     return 'mysql://user@{}/foo'.format(self.DB_SERVER)
-
 
 class ProductionConfig(Config):
     """Uses production database server."""
-
     pass
 
 
